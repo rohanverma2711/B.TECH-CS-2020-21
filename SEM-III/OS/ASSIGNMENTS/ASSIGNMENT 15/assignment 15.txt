@@ -1,0 +1,18 @@
+echo "-----------------------------"
+echo "program to print the table
+echo "-----------------------------"
+#read the number from the input
+read -p "Enter a positive number" number
+echo
+read -p "Enter how many number do you want to print" range
+i=1
+#while loop to print the table
+while [ $i -le $range ]
+do
+	echo " $number x $i = `expr $number \* $i`"
+	i=`expr $i + 1`
+		
+done
+
+echo "-----------------------------"
+	

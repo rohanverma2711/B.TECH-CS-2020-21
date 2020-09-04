@@ -1,0 +1,30 @@
+echo "-----------------------------"
+echo "program to calulate grade"
+echo "-----------------------------"
+#read the number from the input
+read -p "Enter first subject " sub1
+read -p "Enter second subject" sub2
+read -p "Enter third subject " sub3
+echo
+# calculate the sum
+sum=(($sub1 + $sub2 + $sub3))
+# calculate the percentage
+perc=(($sum / 3))
+# check the percentage to calculate the grade
+echo
+if [ $perc -ge 60 ]
+then
+	echo "First"
+else if [ $perc -ge 50 ]
+then
+	echo "Second'
+else if [ $perc -ge 40 ]
+then 
+	echo "Third"
+else
+	echo "Fail"
+fi
+fi
+fi
+echo "------------------------------"
+	

@@ -1,0 +1,15 @@
+echo "-----------------------------  "
+echo "program to calculate factorial
+echo "-----------------------------  "
+#read the number from the input
+read -p "Enter a positive number" number
+original=$number
+fact=1
+#while loop to print the table
+while [ $number -gt 1]
+do
+	fact=$(( $fact * $number ))
+	number=$(( number - 1 ))	
+done
+echo "Factorial of $original is $fact"
+echo "-----------------------------  "
