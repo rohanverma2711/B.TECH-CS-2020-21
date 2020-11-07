@@ -1,0 +1,94 @@
+1--
+ALTER TABLE STUDENT 
+ADD DoB DATE;
+
+
+2-
+--2ND ADD THE VALUES
+UPDATE STUDENT SET DOB = '26-JUN-96' WHERE SID = 123;
+UPDATE STUDENT SET DOB = '7-APR-95' WHERE SID = 234;
+UPDATE STUDENT SET DOB = '4-FEB-95' WHERE SID = 345;
+UPDATE STUDENT SET DOB = '24-JULY-97' WHERE SID = 456;
+UPDATE STUDENT SET DOB = '21-DEC-96' WHERE SID = 567;
+UPDATE STUDENT SET DOB = '27-AUG-96' WHERE SID = 678;
+UPDATE STUDENT SET DOB = '8-OCT-96' WHERE SID = 789;
+UPDATE STUDENT SET DOB = '27-MAR-97' WHERE SID = 987;
+UPDATE STUDENT SET DOB = '7-MAR-96' WHERE SID = 876;
+UPDATE STUDENT SET DOB = '8-AUG-98' WHERE SID = 765;
+UPDATE STUDENT SET DOB = '26-MAY-96' WHERE SID = 654;
+UPDATE STUDENT SET DOB = '27-AUG-98' WHERE SID = 543;
+
+
+3--
+--3RD
+--Find average of GPA round off to 2 decimal places
+SELECT ROUND(AVG(GPA),2) AS AVERAGE_GPA FROM STUDENT;
+
+
+--4TH
+--Find year of DoB of Student having less than 1000.
+SELECT EXTRACT(YEAR FROM DOB) AS YEARS FROM STUDENT WHERE SIZEHS <1000;
+
+
+--Q5. Compute Age of each student.
+SELECT ROUND(MONTHS_BETWEEN(SYSDATE,DOB)/12) || ' YEARS' AS AGE FROM STUDENT;
+
+
+--Q6. Display name of all Students in uppercase and name of college they applied in lower case.
+SELECT UPPER(SNAME) AS STUDENT_NAME,LOWER(CNAME) AS COLLEGE_NAME FROM STUDENT NATURAL JOIN APPLY;
+
+--7 Find fourth alphabet of each student. (Hint: use substring)
+SELECT SUBSTR(SNAME,4,1) FROM STUDENT
+
+
+--Q8. Find sID and sName of student whose sName has string length greater than 3.
+SELECT SID,SNAME FROM STUDENT WHERE LENGTH(SNAME) >3
+
+
+--Q9. Find floor, ceiling and truncate (to one decimal place) value of average GPA.
+SELECT FLOOR(AVG(GPA)) FROM STUDENT;
+SELECT CEIL(AVG(GPA)) FROM STUDENT;
+SELECT TRUNC(AVG(GPA),1) FROM STUDENT;
+
+
+--Q10. Display details of all students whose sID is even.
+SELECT * FROM STUDENT WHERE MOD(SID,2) = 0
+
+
+--Q11. Compute Square Root of 900 and 24^7
+SELECT SQRT(900),SQRT(POWER(24,7)) FROM DUAL
+
+
+
+
+
+--Q12. Consider the string “Peter Piper picked a peck of pickled peppers. A peck of pickled peppers Peter Piper picked. If Peter Piper picked a peck of pickled peppers, Where the peck of pickled peppers Peter Piper picked?”
+--Find 6th occurrence of string ‘pick’. (Hint: use INSTR)
+
+SELECT INSTR('Peter Piper picked a peck of pickled peppers. A peck of pickled peppers Peter Piper picked. If Peter Piper picked a peck of pickled peppers,Where the peck of pickled peppers Peter Piper picked?','pick',1,6) FROM DUAL
+
+ANS   125 
+
+
+--Q13. Consider String ‘Satya Nadella’ replace this using the key
+
+ 
+SELECT translate('Satya Nadella' ,'adelNSty','12345678')  as Translate from dual
+
+ans   61781 5123441
+
+
+
+--Q14. Display sID, sname and DoB in this format ‘February 26, 2014’
+SELECT SID,SNAME,TO_CHAR(DOB,'MONTH DD, YYYY') AS DATE_ FROM STUDENT
+
+
+
+--Q15. Convert the text ’26/02/2014’ to date.
+SELECT TO_DATE('26/02/2014','DD MM YYYY') FROM DUAL
+
+
+Q16. Compute on which date is next Saturday and last day of this month?
+
+SELECT SYSDATE,NEXT_DAY(SYSDATE,'SATURDAY') FROM DUAL
+SELECT SYSDATE,LAST_DAY(SYSDATE) FROM DUAL
