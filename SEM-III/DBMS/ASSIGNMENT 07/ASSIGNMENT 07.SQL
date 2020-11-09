@@ -13,7 +13,7 @@ Q2. Create a view cView on college (containing all the columns) and rename the c
 
 CREATE VIEW cVIEW(collegeName,state,seats) as
 SELECT *
-from college
+from COLLEGE
 
 
 select * from cVIEW
@@ -45,7 +45,7 @@ SELECT  * FROM CSBERKELEY
 
 CREATE OR REPLACE VIEW CSBERKELEY AS
 SELECT SID,SNAME,GPA,SIZEHS
-FROM STUDENT NATURAL JOIN csaccept
+FROM STUDENT NATURAL JOIN CSACCEPT
 WHERE SIZEHS >500 AND CNAME = 'Berkeley'
 
 SELECT  * FROM CSBERKELEY
@@ -78,8 +78,18 @@ WHERE SIZEHS >1000
 
 SELECT  * FROM STUDENT
 
+--Q10.Create a view AppCount which contains sID of Student and number of applications they filed. Name the column sID and NoOfApp. 
+
+CREATE VIEW APPCOUNT AS
+SELECT SID,COUNT(MAJOR) NoofApp 
+FROM APPLY
+GROUP BY SID
 
 
+--Q10. Update NoOfApp so that sID 234 contains 4 applications
+UPDATE APPCOUNT 
+SET NoofApp =4 
+WHERE SID =234
 
 
 
@@ -91,9 +101,10 @@ FROM STUDENT
 SELECT  * FROM STUNAME
 
 
-CANNOT UPDATE AS NO PRIMARY KEY
+--CANNOT UPDATE AS NO PRIMARY KEY 
 
 --Q12. Create view studentHS having details of student comes from High School of size more than 1000 using with check option.
+
 CREATE OR REPLACE VIEW  STUDENTHS AS
 SELECT  * FROM STUDENT 
 WHERE SIZEHS> 1000
@@ -105,21 +116,23 @@ SELECT * FROM STUDENTHS
 
 
 --Q13. Try insert detail of a new student Ram with sID 999 having GPA 9.9 and sizeHS 9999 to newly created view studentHS. (Comment is this view updatable?)
-INSERT INTO STUDENTHS VALUES(999,'Ram',9.9,9999 , null);
+INSERT INTO STUDENTHS(SID,SNAME,GPA,SIZEHS) VALUES(999,'Ram',9.9,9999);
 
 select * from studenths
 
-yes updated
+--yes updated
+
+
 
 
 --Q14. Clerk realize he wrongly type sizeHS of Ramu as 9999 it is actually 999. Can you help him to update the value of sizeHS of Ramu.
-insert into studenths values('Ramu',999,9.9,999,null)
---Cannot update
+INSERT INTO STUDENTHS(SID,SNAME,GPA,SIZEHS) VALUES('Ramu',999,9.9,999)
+--Cannot update as mentionedsize is less than 1000
 
 ----Q15. Now, another boy registered to our system named Ramu with sID 998 having GPA 9.8 and sizeHS 989.
 
 
-insert into studenths values('Ramu',998,9.8,989,null)
+INSERT INTO STUDENTHS(SID,SNAME,GPA,SIZEHS) VALUES('Ramu',998,9.8,989)
 
 
 --cannot update as size is less than mentioned --1000
