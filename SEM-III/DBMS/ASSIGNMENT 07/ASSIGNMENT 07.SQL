@@ -68,18 +68,11 @@ SELECT * FROM CSBERKELEY
 
 --Q8 Q8. Update GPA by 0.8 of students in view WeakStudent who having high school size greater than 1000.
 
-
-CREATE VIEW WEAKSTUDENT1 
-SELECT  * FROM STUDENT
-
-
-SELECT * FROM WEAKSTUDENT1
-
-UPDATE WEAKSTUDENT1
+UPDATE WeakStudent
 SET GPA = GPA + 0.8
 WHERE SIZEHS >1000
 
-SELECT  * FROM STUDENT
+SELECT  * FROM WeakStudent
 
 --Q10.Create a view AppCount which contains sID of Student and number of applications they filed. Name the column sID and NoOfApp. 
 
