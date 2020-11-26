@@ -1,4 +1,4 @@
-1--Q1. Create view WeakStudent on Student whose GPA is less than 3.7.
+--Q1. Create view WeakStudent on Student whose GPA is less than 3.7.
 
 
 CREATE VIEW WeakStudent AS 
@@ -8,8 +8,7 @@ WHERE GPA <3.7
 SELECT * FROM WEAKSTUDENT
 
 
-2--
-Q2. Create a view cView on college (containing all the columns) and rename the column cName as collegeName and enrollment as seats respectivelY
+--Q2. Create a view cView on college (containing all the columns) and rename the column cName as collegeName and enrollment as seats respectivelY
 
 CREATE VIEW cVIEW(collegeName,state,seats) as
 SELECT *
@@ -52,13 +51,13 @@ SELECT  * FROM CSBERKELEY
 
 
 
-Q5 -- Q5. Display information about student in CSberk having GPA greater than 3.8.
+ -- Q5. Display information about student in CSberk having GPA greater than 3.8.
 
 
 SELECT * FROM CSBERKELEY 
 WHERE GPA >3.8
 
-Q6 --Q6. Drop view CSaccept.
+--Q6. Drop view CSaccept.
 
 DROP VIEW CSACCEPT
 
@@ -69,14 +68,11 @@ SELECT * FROM CSBERKELEY
 
 --Q8 Q8. Update GPA by 0.8 of students in view WeakStudent who having high school size greater than 1000.
 
-
-SELECT * FROM WEAKSTUDENT
-
-UPDATE WEAKSTUDENT
+UPDATE WeakStudent
 SET GPA = GPA + 0.8
 WHERE SIZEHS >1000
 
-SELECT  * FROM STUDENT
+SELECT  * FROM WeakStudent
 
 --Q10.Create a view AppCount which contains sID of Student and number of applications they filed. Name the column sID and NoOfApp. 
 
@@ -90,6 +86,9 @@ GROUP BY SID
 UPDATE APPCOUNT 
 SET NoofApp =4 
 WHERE SID =234
+
+
+--WILL NOT GET UPDATED
 
 
 
